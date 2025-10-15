@@ -366,9 +366,13 @@ function App() {
 
  
   const handleUserClick = (user) => {
+   setSelectedUser(user);
+   setShowModal(true);
   }
 
   const handleCloseModal = () => {
+   setShowModal(false);
+   setSelectedUser(null);
   }
 
   return (
