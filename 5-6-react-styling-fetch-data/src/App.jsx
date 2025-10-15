@@ -352,6 +352,19 @@ function App() {
    fetchUsers();
  }, []);
 
+
+ useEffect(() => {
+   if (searchTerm.trim() === '') {
+     setFilteredUsers(users);
+   } else {
+     const filtered = users.filter(user =>
+       user.name.toLowerCase().includes(searchTerm.toLowerCase())
+     );
+     setFilteredUsers(filtered);
+   }
+ }, [searchTerm, users]);
+
+ 
   const handleUserClick = (user) => {
   }
 
