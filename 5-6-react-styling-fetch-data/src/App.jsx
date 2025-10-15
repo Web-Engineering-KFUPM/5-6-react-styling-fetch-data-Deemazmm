@@ -332,9 +332,25 @@ function App() {
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    {/*API fetch logic*/}
-
-  }, [])
+   const fetchUsers = async () => {
+     try {
+       setLoading(true);
+ 
+       const response = await fetch('https://jsonplaceholder.typicode.com/users');
+ 
+       const data = await response.json();
+ 
+       setUsers(data);
+       setFilteredUsers(data);
+     } catch (err) {
+       setError(err.message);
+     } finally {
+       setLoading(false);
+     }
+   };
+ 
+   fetchUsers();
+ }, []);
 
   const handleUserClick = (user) => {
   }
